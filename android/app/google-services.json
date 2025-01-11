@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "105932916701",
+    "project_id": "coffekucalculator",
+    "storage_bucket": "coffekucalculator.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105932916701:android:e03cd8e58d78e045b95834",
+        "android_client_info": {
+          "package_name": "com.example.coffeeku"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4is7W7YD_nejVjLlL1YUpCK7sM48yTWE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

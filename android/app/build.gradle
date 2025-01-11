@@ -1,0 +1,79 @@
+plugins {
+    id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+
+apply plugin: 'com.google.gms.google-services'
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    namespace = "com.example.coffeeku"
+
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileSdk 35
+    ndkVersion "25.1.8937393"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = 17
+    }
+
+    defaultConfig {
+        // Application ID unik untuk aplikasi Anda
+        applicationId "com.example.coffeeku"
+
+        // Tetapkan minSdkVersion sesuai dengan kebutuhan Firebase
+        minSdkVersion 25 // Pastikan menggunakan versi 23 atau lebih tinggi
+
+        // Tetapkan targetSdkVersion untuk mendukung versi Android terbaru
+        targetSdkVersion 33 // Disarankan mengikuti versi SDK terbaru
+
+        // Versi aplikasi
+        versionCode 1 // Increment jika ada pembaruan aplikasi
+        versionName "1.0" // Versi aplikasi dalam format string
+
+        // Opsi lainnya jika diperlukan
+        multiDexEnabled true // Aktifkan jika proyek Anda menggunakan banyak dependensi
+    }
+
+    signingConfigs {
+        release {
+            keyAlias = keystoreProperties['keyAlias']
+            keyPassword = keystoreProperties['keyPassword']
+            storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword = keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.release
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    // ...
+    implementation("com.google.android.material:material:1.12.0")
+    // ...
+}
